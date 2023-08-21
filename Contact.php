@@ -33,6 +33,16 @@
                     ValidateEmail   ( $_POST['email']   );
                     ValidateSubject ( $_POST['subject'] );
                     ValidateMessage ( $_POST['message'] );
+
+                    CreateMessage
+                    (
+                        $_POST['name']    ,
+                        $_POST['email']   ,
+                        $_POST['subject'] ,
+                        $_POST['message']
+                    );
+
+                    InformOwner();
                 }
                 else
                 {

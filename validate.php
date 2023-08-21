@@ -56,6 +56,39 @@ function ValidateMessage($message)
     }
 }
 
+
+//-------------------------------------------------------------------------------------
+
+function CreateMessage($name , $email , $subject , $message)
+{
+    include_once("database_details.php");
+    $conn = mysqli_connect(DB_HOST , DB_USER , DB_PASS , DB_NAME);
+    if(!$conn)
+    {
+        throw new ProcessException(500 , "Database Connection Error");
+    }
+    $query = sprintf(
+                     "INSERT INTO CONTACT_FORM ( NAME , EMAIL , SUB , MSG , IP , CREATED_AT ) VALUES ('%s' , '%s' , '%s' , '%s' ,'%s' , '%s')", 
+                     $name , $email , $subject , $message , $_SERVER['REMOTE_ADDR'] , date("Y-m-d H:i:s")
+                    );
+    $result = mysqli_query($conn , $query);
+    if(!$result)
+    {
+        mysqli_close($conn);
+        throw new ProcessException(500 , "Database Query Error");
+    }
+    mysqli_close($conn);
+}
+
+function InformOwner()
+{
+    include_once("site_details.php");
+    if(!mail(OWNER_MAIL , "Contact Form" , "You have a new message from your website"))
+    {
+        throw new ProcessException(500 , "Mail Error");
+    }
+}
+
 //-------------------------------------------------------------------------------------
 
 const MSG_BOX_SUCCESS = "success";

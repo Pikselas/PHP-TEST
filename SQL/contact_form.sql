@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS contact_form
+(
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  NAME varchar(255) NOT NULL,
+  EMAIL varchar(255) NOT NULL,
+  SUB varchar(255) NOT NULL,
+  MSG text NOT NULL,
+  IP character(15) NOT NULL,
+  CREATED_AT datetime NOT NULL,
+  PRIMARY KEY (ID)
+);
