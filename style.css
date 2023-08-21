@@ -28,21 +28,25 @@ form
 .input-class
 {
     width: 65%;
-    background: linear-gradient(-45deg, #02ffe6, #ef3cff8c);
+    /* background: linear-gradient(-45deg, #02ffe6, #ef3cff8c); */
+    background: #140127bf;
     border-radius: 20px;
-    border: 2px solid #202bff;
-    color: #070023;
+    border:none;
+    /* border-top: 2px solid #ff2bdc;
+    border-bottom: 2px solid #ff2bdc; */
+    color: #29ffc3;
     font-family: "monospace";
     font-size: 14px;
     padding: 2px;
     margin-bottom: 15px;
     text-align: center;
-    /* box-shadow: 0px 5px 10px #10002e; */
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .input-class:focus
 {
     outline: none;
+    box-shadow: 0px 0px 10px 2px #29ffc3;
 }
 
 input
@@ -53,6 +57,8 @@ input
 textarea
 {
     height: 100px;
+    min-width: 65%;
+    max-width: 65%;
 }
 
 input[type="submit"]
