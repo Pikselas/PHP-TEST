@@ -1,42 +1,6 @@
 <?php
-include "validate.php";
-
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-
-    try
-    {
-        if
-        (
-            !empty($_POST['name'])
-                and
-            !empty($_POST['email'])
-                and
-            !empty($_POST['subject'])
-                and
-            !empty($_POST['message'])
-        )
-        {
-            ValidateName($_POST['name']);
-            ValidateEmail($_POST['email']);
-            ValidateSubject($_POST['subject']);
-            ValidateMessage($_POST['message']);
-        }
-        else
-        {
-            throw new ProcessException(400 , "Fill all the fields");
-        }
-    }
-    catch(ProcessException $e)
-    {
-        http_response_code($e->getResponseCode());
-        echo $e->getExceptMessage();
-    }
-}
+    include "validate.php";
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +10,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
+<!-------------------------------------------------------------------------------------------------------->
+    <?php
+
+        if($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+
+            try
+            {
+                if
+                (
+                    !empty($_POST['name'])
+                        and
+                    !empty($_POST['email'])
+                        and
+                    !empty($_POST['subject'])
+                        and
+                    !empty($_POST['message'])
+                )
+                {
+                    ValidateName    ( $_POST['name']    );
+                    ValidateEmail   ( $_POST['email']   );
+                    ValidateSubject ( $_POST['subject'] );
+                    ValidateMessage ( $_POST['message'] );
+                }
+                else
+                {
+                    throw new ProcessException(400 , "Fill all the fields");
+                }
+                echo GenerateMessageBox( "Message sent successfully" , MSG_BOX_SUCCESS );
+            }
+            catch( ProcessException $e )
+            {
+                http_response_code( $e->getResponseCode() );
+                echo GenerateMessageBox( $e->getExceptMessage() , MSG_BOX_ERROR );
+            }
+        }
+
+    ?>
+<!------------------------------------------------------------------------------------------------------>
     <form action="" method="POST">
         <input class="input-class" type="text" name="name" placeholder="Name" value="<?php 
         

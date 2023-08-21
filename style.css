@@ -85,3 +85,32 @@ input[type="submit"]:hover
     border: 2px solid #ff00f2;
     box-shadow: 0px 0px 10px #ff00f2;
 }
+
+.server-msg
+{
+    width: 400px;
+    height: 30px;
+    border-radius: 20px;
+    font-family: monospace;
+    font-size: large;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    flex-direction: row;
+    top: 5%;
+    left: calc(50% - 200px);
+}
+
+.server-msg.success
+{
+    color: #ffffff;
+    background: linear-gradient(60deg, #ff32b1,#00ffd5 50%);
+}
+
+.server-msg.error
+{
+    color: #ffffff;
+    background: linear-gradient(60deg, #ff32b1 50%,#00ffd5);
+}

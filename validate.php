@@ -56,4 +56,14 @@ function ValidateMessage($message)
     }
 }
 
+//-------------------------------------------------------------------------------------
+
+const MSG_BOX_SUCCESS = "success";
+const MSG_BOX_ERROR = "error";
+
+function GenerateMessageBox($message , $type)
+{
+    return sprintf('<div class="server-msg %s">%s</div>' , $type , $message);
+}
+
 ?>
